@@ -1,11 +1,9 @@
 import { useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import { useSocket } from "../context/SocketProvider";
 
 export const Chat: React.FC = () => {
 
   const [message, setMessage] = useState<string>("");
-  const { sendMessageGeneralRoom, socket } = useSocket();
   const searchParams = useSearchParams();
 
 
@@ -20,7 +18,6 @@ export const Chat: React.FC = () => {
       const roomId = searchParams.get('roomId');
       if (!roomId) return;
 
-      sendMessageGeneralRoom(username, message, roomId);
     }
   };
 
@@ -49,4 +46,5 @@ export const Chat: React.FC = () => {
     </div>
   )
 }
+
 

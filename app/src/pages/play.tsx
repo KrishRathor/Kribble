@@ -1,8 +1,8 @@
+import { Chat } from "@/components/Chat";
+import { Menubar } from "@/components/Menubar";
+import { Participants } from "@/components/Participants";
+import { Whiteboard } from "@/components/Whiteboard";
 import React from "react";
-import { Menubar } from "../components/Menubar";
-import { Participants } from "../components/Participants";
-import { Whiteboard } from "../components/Whiteboard";
-import { Chat } from "../components/Chat";
 
 const Play: React.FC = () => {
   return (
@@ -20,4 +20,5 @@ const Play: React.FC = () => {
 }
 
 export default Play;
+
 

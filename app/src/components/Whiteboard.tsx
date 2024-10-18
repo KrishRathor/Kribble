@@ -1,4 +1,3 @@
-"use client";
 import React, { useRef } from "react";
 import CanvasDraw from "react-canvas-draw";
 
@@ -20,5 +19,3 @@ export const Whiteboard: React.FC = () => {
     </div>
   )
 }
-
-
