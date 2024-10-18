@@ -25,17 +25,6 @@ export class SocketService {
       const token = socket.handshake.query.userToken;
       console.log(`New Socket Connected with socket id ${socket.id} and token ${token}`);
 
-      socket.on('join:room', ({ username, roomId }) => {
-        console.log(username, roomId);
-        socket.join(roomId);
-      })
-
-      socket.on('message:general', ({ username, message, roomId }) => {
-        console.log(username, message, roomId);
-        io.emit('message:general:broadcast', { username, message, roomId });
-        console.log('broadcast');
-      })
-
     })
   }
 
