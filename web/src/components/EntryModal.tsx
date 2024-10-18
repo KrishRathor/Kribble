@@ -1,11 +1,32 @@
-"use client";
-import React from "react";
+import { useRouter } from "next/navigation";
+import React, { useState } from "react";
+import { useSearchParams } from 'next/navigation'
+import { useSocket } from "../context/SocketProvider";
 
 export const EntryModal: React.FC = () => {
 
+  const [username, setUsername] = useState('');
+  const router = useRouter();
+  const searchParams = useSearchParams()
+  const { joinRoom } = useSocket();
+
   const handlePlayClick = (e: any) => {
     e.preventDefault();
-    console.log('i was hit');
+
+    if (username === '') return;
+    localStorage.setItem('username', username);
+    const roomId = searchParams.get('roomId');
+    console.log(roomId);
+
+    if (!roomId) {
+      console.log('came here');
+      joinRoom(username, 'default');
+      router.push('/play?roomId=default');
+    } else {
+      joinRoom(username, roomId);
+      router.push(`/play?roomId=${roomId}`);
+    }
+
   }
 
   return (
@@ -15,6 +36,8 @@ export const EntryModal: React.FC = () => {
           <input
             placeholder="Enter your name"
             className="h-[5vh] w-4/5 mx-auto mt-4 rounded-sm text-black"
+            onChange={e => setUsername(e.target.value)}
+            value={username}
           />
         </div>
         <div className="flex items-center justify-center mt-4 " >
@@ -40,3 +63,4 @@ const AvatarSelector: React.FC = () => {
     </div>
   )
 }
+

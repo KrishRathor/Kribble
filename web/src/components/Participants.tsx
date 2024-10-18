@@ -7,3 +7,4 @@ export const Participants: React.FC = () => {
     </div>
   )
 }
+

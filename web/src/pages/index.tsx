@@ -1,6 +1,7 @@
-import { EntryModal } from "./_components/EntryModal";
+import { type NextPage } from "next";
+import { EntryModal } from "../components/EntryModal";
 
-export default async function Home() {
+const Home: NextPage = () => {
   return (
     <div className=" bg-[url('/bg.avif')] h-[100vh] bg-cover bg-center bg-repeat " >
       <div className="flex items-center justify-center" >
@@ -8,4 +9,7 @@ export default async function Home() {
       </div>
     </div>
   );
-}
+};
+
+export default Home;
+
