@@ -1,11 +1,13 @@
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { useSocket } from "@/context/SocketProvider";
 
 export const EntryModal: React.FC = () => {
   const [username, setUsername] = useState("");
   const router = useRouter();
   const searchParams = useSearchParams();
+  const { joinRoom } = useSocket();
 
   const handlePlayClick = (e: any) => {
     e.preventDefault();
@@ -18,6 +20,10 @@ export const EntryModal: React.FC = () => {
     if (!roomId) {
       console.log("came here");
       router.push("/play?roomId=default");
+      joinRoom({
+        room: 'default',
+        username: username
+      })
     } else {
       router.push(`/play?roomId=${roomId}`);
     }
